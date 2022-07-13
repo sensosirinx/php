@@ -66,40 +66,15 @@ class DeliveryController
 
         if (count($this->delivery_services) > 0) {
 
-            if ($this->delivery_type === 1) {
-                $this->fast_delivery();
-            } else {
-                $this->slow_delivery();
-            }
+            $itog = $this->build_itog();
+            view('result',
+                compact( 'itog')
+            );
 
         } else {
             $this->error_message('Отсутствует транспортная компания');
         }
 
-    }
-
-    /**
-     * @return int
-     * @throws Exception
-     */
-    public function fast_delivery (): int
-    {
-        $itog = $this->build_itog();
-        return view('result',
-            compact( 'itog')
-        );
-    }
-
-    /**
-     * @return int
-     * @throws Exception
-     */
-    public function slow_delivery (): int
-    {
-        $itog = $this->build_itog();
-        return view('result',
-            compact( 'itog')
-        );
     }
 
     /**
