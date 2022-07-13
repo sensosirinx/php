@@ -50,10 +50,10 @@ class DeliveryController
                 compact('title')
             );
             return;
-        } elseif (!isset($this->data['source_kladr']) and !isset($this->data['target_kladr'])) {
+        } elseif (!$this->data['source_kladr'] or !$this->data['target_kladr']) {
             $this->error_message('Не выбраны пункты доставки');
             return;
-        } elseif (!isset($_GET['weight'])) {
+        } elseif (!$this->data['weight']) {
             $this->error_message('Не выбран вес посылки');
             return;
         }
